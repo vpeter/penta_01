@@ -13,9 +13,8 @@ class OrdersController < ApplicationController
   # GET /orders/1
   # GET /orders/1.xml
   def show
-	@xy = OrderItem.all(:conditions => { :order_id => [22] }) 	
-
-    @order = Order.find(params[:id])
+    @order = Order.find(params[:id])	# meg nem tudjuk, honnan vesz az id-t, a sessionbol?
+	@aktualis_tetelek = OrderItem.all(:conditions => { :order_id => [@order.id] }) 	
 
     respond_to do |format|
       format.html # show.html.erb

@@ -1,7 +1,7 @@
 <h1>Kosár</h1>
 
 <br/><br/>
-<table width="300" >
+<table width="360" >
 	<% @cart.each do |item| %>
 	<tr><p>
 		<td width="34%">
@@ -11,13 +11,16 @@
 		<%= item.last.to_s + " db" %>
 		</td>
 		<td width="22%">
-		<%= link_to "több", cart_path(item.first), :method => :put %>
+		<%= link_to "+1", cart_path(item.first), :method => :put %>
 		</td>
 		<td width="22%">
-		<%= link_to "kevesebb", cart_path(item.first), :method => :delete %>
+		<%= link_to "+10", :controller => "carts", :action => "update_10" %>
+		</td>
+		<td width="22%">
+		<%= link_to "-1", cart_path(item.first), :method => :delete %>
 		</td>
 	</p></tr>
 	<% end %>
 </table>
     <br /><b><%= link_to "Újabb termék", products_path %></b>
-    <br /><br /><%= button_to "Megrendelés", new_order_path %>
+    <br /><br /><%= link_to "Megrendelés", new_order_path %>

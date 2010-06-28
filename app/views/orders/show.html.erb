@@ -1,26 +1,27 @@
 <h1>Köszönjük a megrendelését</h1><br />
-<h3>Az alábbiakat tételeket rendelte:</h3>
+<h3>Az alábbi tételeket rendelte:</h3>
 <% megr_ara = 0 %>
 <table>
-	<% @xy.each do |record| %>
+	<% @aktualis_tetelek.each do |rekord| %>
 		<tr>
 			
 			<td width="130">
-				Valamilyen cucc
+				<b><%= Product.find(rekord.product_id.to_s).title %></b>
+				<b><%#= rekord.product_id.to_s %></b>
 			</td>
 			<td align="right" width="70">
-				<b><%= record.price.to_s + " Ft" %></b>
+				<b><%= rekord.price.to_s + " Ft" %></b>
 			</td>
 			<td align="right" width="50">
-				<b><%= record.quantity.to_s + " db" %></b>
+				<b><%= rekord.quantity.to_s + " db" %></b>
 			</td>
 			<td align="right" width="90">
 				Tétel ára:
 			</td>
 			<td align="right" width="70">
-				<b><%= (record.quantity*record.price).to_s + "Ft" %></b><br />
+				<b><%= (rekord.quantity*rekord.price).to_s + " Ft" %></b><br />
 			</td>
-			<% megr_ara += record.price %>
+			<% megr_ara += rekord.price %>
 		</tr>
 	<%end%>
 		<tr>

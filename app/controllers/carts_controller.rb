@@ -16,6 +16,16 @@ class CartsController < ApplicationController
     
     redirect_to carts_path
   end
+  def update_10
+    if session[:cart].has_key?(@id)
+      session[:cart][@id] += 10
+    else
+      session[:cart][@id] = 10
+    end
+    flash[:notice] = "Frissitettuk a kosarad."
+    
+    redirect_to carts_path
+  end
   
   # params[:id]
   def destroy
