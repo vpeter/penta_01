@@ -1,0 +1,59 @@
+<h1>Köszönjük a megrendelését</h1><br />
+<h3>Az alábbiakat tételeket rendelte:</h3>
+<% megr_ara = 0 %>
+<table>
+	<% @xy.each do |record| %>
+		<tr>
+			<td width="130">
+				Valamilyen cucc
+			</td>
+			<td align="right" width="70">
+				<b><%= record.price.to_s + " Ft" %></b>
+			</td>
+			<td align="right" width="50">
+				<b><%= record.quantity.to_s + " db" %></b>
+			</td>
+			<td align="right" width="90">
+				Tétel ára:
+			</td>
+			<td align="right" width="70">
+				<b><%= (record.quantity*record.price).to_s + "Ft" %></b><br />
+			</td>
+			<% megr_ara += record.price %>
+		</tr>
+	<%end%>
+		<tr>
+			<td align="right" colspan="4">
+				<h3>A megrendelés teljes összege:</h3>
+			</td>
+			<td align="right" width="80">
+				<h3><%=megr_ara.to_s + "Ft" %></h3>
+			</td>
+		</tr>
+</table>
+<hr>
+<h3>A megrendelő adatai:</h3>
+
+<p>
+  <b>Név:</b>
+  <%=h @order.name %>
+</p>
+
+<p>
+  <b>Város:</b>
+  <%=h @order.town %>
+</p>
+
+<p>
+  <b>Irányítószám:</b>
+  <%=h @order.zip %>
+</p>
+
+<p>
+  <b>Utca:</b>
+  <%=h @order.street %>
+</p>
+
+
+<%= link_to 'Edit', edit_order_path(@order) %> |
+<%= link_to 'Back', orders_path %>

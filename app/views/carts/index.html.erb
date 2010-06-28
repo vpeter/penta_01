@@ -1,0 +1,23 @@
+<h1>Kosár</h1>
+
+<br/><br/>
+<table width="300" >
+	<% @cart.each do |item| %>
+	<tr><p>
+		<td width="34%">
+		<%= item.first.title%>
+		</td>
+		<td width="22%">
+		<%= item.last.to_s + " db" %>
+		</td>
+		<td width="22%">
+		<%= link_to "több", cart_path(item.first), :method => :put %>
+		</td>
+		<td width="22%">
+		<%= link_to "kevesebb", cart_path(item.first), :method => :delete %>
+		</td>
+	</p></tr>
+	<% end %>
+</table>
+    <br /><b><%= link_to "Újabb termék", products_path %></b>
+    <br /><br /><%= button_to "Megrendelés", new_order_path %>

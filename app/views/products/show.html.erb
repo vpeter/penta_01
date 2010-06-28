@@ -1,0 +1,17 @@
+<h1>
+  <%=h @product.title %>
+</h1><br />
+
+<p>  
+  <%=image_tag @product.image %>
+  Ár:
+  <b><%=h @product.price.to_s + " Ft" %></b>
+</p>
+
+<p>  
+  <%= @product.description %>
+</p>
+
+<h3><%= link_to "Kosárba", cart_path(@product), :method => :put %></h3><br />
+
+<%= link_to 'Vissza', products_path %>

@@ -1,0 +1,24 @@
+<h1>Termékek</h1><br />
+<% @products.each do |product| %>
+<table >
+	<tr>
+	    <td width="110px" rowspan="4"><%=link_to (image_tag product.image), product %></td>
+	    <td><h2>&nbsp;</h2></td>
+	<tr>
+	    <td><h3>
+		<%=link_to product.title, product%>  
+		</h3></td>
+	</tr>
+	<tr>
+	    <td><h3>
+		<%=h product.price.to_s + " Ft" %>  	
+		</h3></td>
+	</tr>
+	<tr>
+	    <td><h3>
+		</h3></td>
+	</tr>
+</table>
+<% end %>
+
+

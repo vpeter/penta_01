@@ -1,0 +1,127 @@
+img {
+	border: 0px;
+}
+*, html{
+  margin: 0;
+  padding: 0;
+}
+body{
+  font-family: Verdana, sans-serif;
+  font-size: 13px;
+  line-height: 1.7em;
+  text-align: center;
+  background: #e2e2e2;
+}
+a,a:visited{
+  color: #003399;
+  text-decoration: underline;
+}
+a:hover{text-decoration: none;}
+ul{list-style-type: none;}
+h2{margin: 0.4em 0;}
+h3{margin: 0.4em 0;}
+p{margin-bottom: 0.6em;}
+hr{
+  height:0;
+  margin: 0.6em 0 1em 0;
+  border: none;
+  border-bottom: 2px dashed #c80;
+}
+input, textarea{margin: 0.4em 0 1em 0;}
+.button-to{margin: 0.4em 0;}
+.button-to input{
+  margin: 0;
+  padding: 0.2em 0.6em;
+}
+.orders{
+  margin-left: 2em;
+}
+#notice p, .formError{
+  padding: 0.5em;
+  margin-bottom: 0.2em;
+  background: #ff818c;
+}
+.errorExplanation{
+  background: #ff818c;
+  padding: 1em;
+  margin: 2em;
+}
+
+/* HEADER */
+#header{
+  background: #51260b;
+  padding: 2em 1em 0 0em;
+  border-bottom: 3px solid #f2d65e;
+}
+#header_content{
+  width: 600px;
+  margin: auto;
+  text-align: left;
+}
+#header_content h1{
+  float: left;
+  padding: 0.4em 1em;
+  color: #f2d65e;
+  border: 1px solid #f2d65e;
+}
+#menu{float: right;}
+#menu a, #menu a:visited{
+  display: block;
+  float: left;
+  margin-left: 0.4em;
+  padding: 2em 1.2em 0.5em 1.2em;
+  background: #f2d65e;
+}
+#menu a:hover{background: #f1ab00;}
+
+/* CONTENT */
+#box{
+  width: 620px;
+  margin: auto;
+  text-align: left; 
+}
+#content{
+  padding: 1em;
+  background: #fff;
+  border-left: 2px solid #ccc;
+  border-right: 2px solid #ccc;
+  border-bottom: 2px solid #ccc;
+}
+#box.with_sidebar #content{padding-right: 180px;}
+
+/* SIDEBAR */
+#sidebar{
+  float: right;
+  width: 160px;
+  margin: 1em;
+}
+#cart{
+  background: #fff88b;
+  border: 1px solid #f5ec61;
+  padding: 0 0.6em 1em 0.6em;
+}
+
+/* PRODUCT */
+.product img{
+  float: right;
+  margin-left: 0.4em;
+}
+.product_info{
+  margin: 1em 0;
+}
+/* ADMIN */
+.stat p{
+  height: 1em;
+  padding: 0 0.2em;
+  background: #87d300; 
+}
+/* FOOTER */
+#footer{
+  padding: 1em;
+  font-size: 11px;
+}
+
+.icon img{
+  vertical-align: middle;
+  padding: 0 4px 4px 4px;
+}
