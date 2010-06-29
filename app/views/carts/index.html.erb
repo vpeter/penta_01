@@ -14,7 +14,7 @@
 		<%= link_to "+1", cart_path(item.first), :method => :put %>
 		</td>
 		<td width="22%">
-		<%= link_to "+10", :controller => "carts", :action => "update_10" %>
+		<%= link_to "+10", update10_cart_path(item.first) %>
 		</td>
 		<td width="22%">
 		<%= link_to "-1", cart_path(item.first), :method => :delete %>
