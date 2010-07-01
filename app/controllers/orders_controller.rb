@@ -48,7 +48,7 @@ class OrdersController < ApplicationController
     respond_to do |format|
       if @order.save
       	
-      	@cart.each do |item| 
+      	@rendeles.each do |item| 
       		OrderItem.create :product_id => item.first.id,
       			:order_id => @order.id,
       			:price => item.first.price,

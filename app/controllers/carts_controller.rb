@@ -42,6 +42,20 @@ class CartsController < ApplicationController
     
     redirect_to carts_path
   end
+  def update10levesz
+    if session[:cart].has_key?(@id)
+      if session[:cart][@id] > 10
+        session[:cart][@id] -= 10
+      else
+        session[:cart].delete(@id)
+      end
+    else
+      flash[:notice] = "Valami hiba tortent."
+    end
+    flash[:notice] = "Türültük a kért terméket a kosaradból."
+    
+    redirect_to carts_path
+  end
 
   private
   

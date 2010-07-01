@@ -1,33 +1,34 @@
-<h1>Új megrendelés</h1><br />
-
-<% form_for(@order) do |f| %>
-  <%= f.error_messages %>
-
-  <p>
-    <%= f.label :name %><br />
-    <%= f.text_field :name %>
-  </p>
-  <p>
-    <%= f.label :town %><br />
-    <%= f.text_field :town %>
-  </p>
-  <p>
-    <%= f.label :zip %><br />
-    <%= f.text_field :zip %>
-  </p>
-  <p>
-    <%= f.label :street %><br />
-    <%= f.text_field :street %>
-  </p>
-  <p>
-    <%= f.submit 'Megrendelem én' %>
-  </p>
-<% end %>
-<% @cart.each do |item| %>
-  <p>
-    <%= item.first.title + "    " + item.last.to_s + "    " + item.first.price.to_s  %>
-  </p>
-<% end %>
-
-
+<h1>Megrendelés</h1><br />
+<h3>A kiválasztott termékek:</h3>
+<% megr_ara = 0 %>
+<table width="400">
+	<% @rendeles.each do |tetel| %>
+		<%tetel_termeke=tetel.first%>	<!--> termék rekordja a products táblából <-->
+		<%tetel_darab=tetel.last%>
+		<tr>
+			<td width="110"><b>					<%= tetel_termeke.title %>								</b></td>	<!--> products táblából <-->
+			<td align="right" width="100"><b>	<%= tetel_termeke.price %> Ft/db						</b></td>	<!--> products táblából <-->
+			<td align="right" width="60"><b>	<%= tetel_darab %> db									</b></td>	<!--> sesson adat <-->
+			<td align="right" width="130"><b>	<%= tetelar=tetel_darab*tetel_termeke.price %> Ft/tétel	</b></td>	<!--> sesson + products <-->
+			<% megr_ara += tetelar %>
+		</tr>
+	<% end %>
+	<tr>
+		<td align="right" colspan="4">
+			A megrendelés teljes összege: <b><%=megr_ara.to_s + " Ft" %></b>
+		</td>
+	</tr>
+</table>
+<hr>
+<h2>Kérem adja meg az adatait!</h2>
+<table>
+	<% form_for(@order) do |f| %>
+		<%= f.error_messages %>
+		<tr><td><%= f.label "név: " %></td>				<td><%= f.text_field :name %></td></tr>
+		<tr><td><%= f.label "város: " %></td>			<td><%= f.text_field :town %></td></tr>
+		<tr><td><%= f.label "irányítószám: " %></td>	<td><%= f.text_field :zip %></td></tr>
+		<tr><td><%= f.label "utca: " %></td>			<td><%= f.text_field :street %></td></tr>
+		<tr><td><%= f.submit 'Megrendelem' %></td></tr>
+	<% end %>
+</table>
 <%= link_to 'Back', orders_path %>

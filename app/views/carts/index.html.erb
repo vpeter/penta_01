@@ -1,26 +1,28 @@
 <h1>Kosár</h1>
-
-<br/><br/>
-<table width="360" >
-	<% @cart.each do |item| %>
-	<tr><p>
-		<td width="34%">
-		<%= item.first.title%>
-		</td>
-		<td width="22%">
-		<%= item.last.to_s + " db" %>
-		</td>
-		<td width="22%">
-		<%= link_to "+1", cart_path(item.first), :method => :put %>
-		</td>
-		<td width="22%">
-		<%= link_to "+10", update10_cart_path(item.first) %>
-		</td>
-		<td width="22%">
-		<%= link_to "-1", cart_path(item.first), :method => :delete %>
-		</td>
-	</p></tr>
+<h3>A kiválasztott termékek:</h3>
+<% megr_ara = 0 %>
+<table width="550">
+	<% @rendeles.each do |tetel| %>
+		<%tetel_termeke=tetel.first%>	<!--> termék rekordja a products táblából <-->
+		<%tetel_darab=tetel.last%>
+		<tr>
+			<td width="110"><b>					<%= tetel_termeke.title %>								</b></td>	<!--> products táblából <-->
+			<td align="right" width="100"><b>	<%= tetel_termeke.price %> Ft/db						</b></td>	<!--> products táblából <-->
+			<td align="right" width="46">		<%= link_to "+10", update10_cart_url(tetel.first) %>	</td>
+			<td align="right" width="22">		<%= link_to "+1", cart_path(tetel.first), :method => :put %></td>
+			<td align="right" width="42"><b>	<%= tetel_darab %> db									</b></td>	<!--> sesson adat <-->
+			<td align="right" width="21">		<%= link_to "-1", cart_path(tetel.first), :method => :delete %>	</td>
+			<td align="right" width="30">		<%= link_to "-10", update10levesz_cart_url(tetel.first) %>	</td>
+			<td align="right" width="120"><b>	<%= tetelar=tetel_darab*tetel_termeke.price %> Ft/tétel	</b></td>	<!--> sesson + products <-->
+			<% megr_ara += tetelar %>
+		</tr>
 	<% end %>
+	<tr>
+		<td align="right" colspan="8">
+			A megrendelés teljes összege: <b><%=megr_ara.to_s + " Ft" %></b>
+		</td>
+	</tr>
 </table>
-    <br /><b><%= link_to "Újabb termék", products_path %></b>
-    <br /><br /><%= link_to "Megrendelés", new_order_path %>
+<hr>
+    <br /><b><%= link_to "Újabb termék", products_path %>
+    <br /><br /><%= link_to "Megrendelés", new_order_path %></b>

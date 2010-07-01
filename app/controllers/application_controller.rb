@@ -10,18 +10,29 @@ class ApplicationController < ActionController::Base
 
 	private
 	def cart_list
-		re = []
+		@rendeles = []
 		session[:cart] ||= {}
-		session[:cart].each_pair do |key, value|
+		session[:cart].each_pair do |product_id, db|
 			begin
-		        p = Product.find(key)
-		        re << [p, value]
+		        @rendeles << [Product.find(product_id), db]
 			rescue ActiveRecord::RecordNotFound
 		        logger.info("Product not found with \##{key}")
 			end
 		end
-		@cart = re
 	end
+#	def cart_list
+#		re = []
+#		session[:cart] ||= {}
+#		session[:cart].each_pair do |key, value|
+#			begin
+#		        p = Product.find(key)
+#		        re << [p, value]
+#			rescue ActiveRecord::RecordNotFound
+#		        logger.info("Product not found with \##{key}")
+#			end
+#		end
+#		@cart = re
+#	end
   
 	def authenticate
 		authenticate_or_request_with_http_basic('Administration') do |username, password|
